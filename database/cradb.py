@@ -6,9 +6,19 @@ def init_db(connection):
     tables = {}
     tables['users'] = '''
         CREATE TABLE `users` (
-            `email` varchar(255),
-            `password_hash` varchar(255),
+            `email` VARCHAR(255) NOT NULL,
+            `password_hash` VARCHAR(255) NOT NULL,
             PRIMARY KEY (`email`)
+        )
+    '''
+    tables['alerts'] = '''
+        CREATE TABLE `alerts` (
+            `email` VARCHAR(255) NOT NULL,
+            `numerator` VARCHAR(8) NOT NULL,
+            `denominator` VARCHAR(8) NOT NULL,
+            `treshold` DECIMAL(12,6) NOT NULL,
+            `last` DECIMAL(12,6),
+            PRIMARY KEY (`email`, `numerator`, `denominator`, `treshold`)
         )
     '''
 

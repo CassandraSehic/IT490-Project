@@ -13,9 +13,6 @@ aws ec2 run-instances --image-id ami-0557a15b87f6559cf --count 1 --instance-type
         "ResourceType=instance,Tags=[{Key=Name,Value=cra_database}]" \
         "ResourceType=volume,Tags=[{Key=Name,Value=cra_database_disk1}]"
 
-aws ec2 describe-instances \
-    --filters 'Name=tag:Name,Values=cra_database' 'Name=instance-state-name,Values=running' \
+aws ec2 describe-instances --filters 'Name=tag:Name,Values=cra_database' \
     --query 'Reservations[*].Instances[*].[PublicIpAddress]' \
     --output text > ip.txt
-
-

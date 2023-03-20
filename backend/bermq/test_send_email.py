@@ -1,9 +1,11 @@
 import pika
 import ssl
 import json
+from rmq_url import rmq_url
+
 
 def send_message(email, subject, body):
-    rmq_host = 'b-13421877-88a7-46b2-8c00-1d33f958b4c8.mq.us-east-1.amazonaws.com'
+    rmq_host = rmq_host = rmq_url().split('//')[1].split(':')[0]
     rmq_port = 5671
     rmq_user = 'be'
     rmq_password = 'b3_pa55w0rd$'
@@ -23,4 +25,4 @@ def send_message(email, subject, body):
     rmq_connection.close()
 
 if __name__ == "__main__":
-    send_message("cns27@njit.edu", "Test Email", "This is a test email sent from RabbitMQ. pls work")
+    send_message("cassandra@sehic.net", "Test Email", "This is a test email sent from RabbitMQ. pls work")

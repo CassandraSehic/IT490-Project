@@ -83,3 +83,14 @@ def send_email(to, subject, body):
         properties=pika.BasicProperties(
             delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE))
     connection.close()
+
+def get_alerts(email):
+    return RMQRPCClient('get_alerts').call(email)
+
+def set_alert(email, numerator, denominator, treshold):
+    req = ' '.join([email, numerator, denominator, str(treshold)])
+    return RMQRPCClient('set_alert').call(req)
+
+def delete_alert(email, numerator, denominator, treshold):
+    req = ' '.join([email, numerator, denominator, str(treshold)])
+    return RMQRPCClient('delete_alert').call(req)
