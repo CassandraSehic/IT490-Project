@@ -1,1 +1,1 @@
-def rmq_url(): return 'amqps://b-f98cf01b-5d21-4bf9-8e7d-37a5258958dd.mq.us-east-1.amazonaws.com:5671'
+def rmq_url(): return 'amqps://b-6cd93846-e4d8-4093-a2e6-5aff16442a0d.mq.us-east-1.amazonaws.com:5671'

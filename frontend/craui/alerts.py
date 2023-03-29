@@ -11,26 +11,26 @@ bp = Blueprint('alerts', __name__)
 
 @bp.route('/')
 def index():
-    user_email = session.get('user_email')
-    if user_email is None:
+    username = session.get('username')
+    if username is None:
         return render_template('index.html')
     else:
-        user_alerts = json.loads(get_alerts(user_email))
+        user_alerts = get_alerts(username)
         return render_template('alerts/index.html', alerts=user_alerts)
 
 @bp.route('/set', methods=('POST',))
 @login_required
 def set_a():
-    user_email = session.get('user_email')
+    username = session.get('username')
     numerator = request.form['numerator']
     denominator = request.form['denominator']
-    treshold = request.form['treshold']
-    set_alert(user_email, numerator, denominator, treshold)
+    threshold = request.form['threshold']
+    set_alert(username, numerator, denominator, threshold)
     return redirect(url_for('alerts.index'))
 
-@bp.route('/delete/<numerator>/<denominator>/<treshold>', methods=('POST',))
+@bp.route('/delete/<numerator>/<denominator>/<threshold>', methods=('POST',))
 @login_required
-def delete_a(numerator, denominator, treshold):
-    user_email = session.get('user_email')
-    delete_alert(user_email, numerator, denominator, treshold)
+def delete_a(numerator, denominator, threshold):
+    username = session.get('username')
+    delete_alert(username, numerator, denominator, threshold)
     return redirect(url_for('alerts.index'))
