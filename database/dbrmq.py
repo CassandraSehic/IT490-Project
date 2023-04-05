@@ -3,9 +3,10 @@ import json
 from cradb import init_db
 from rmqrpc import listen
 
-db_host = 'localhost'
+# db_host = 'localhost'
+db_host = 'cra-db-cluster.cluster-ctsdds6tjhz2.us-east-1.rds.amazonaws.com'
 db_user = 'craapp'
-db_password = 'password'
+db_password = 'DBPa55w0rd'
 
 cradb = mysql.connector.connect(
     host=db_host, user=db_user, password=db_password)
