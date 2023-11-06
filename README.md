@@ -1,8 +1,8 @@
 # cra
 
 - Currency Ratio Alerter (CRA)  
--  
-- The Git repository root folder should contain 4 subfolders:  
+
+- The Git repository root folder contains 4 subfolders:  
 	- messaging  
 	- database  
 	- backend  
